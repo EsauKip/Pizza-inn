@@ -87,7 +87,8 @@ $(document).ready(function() {
                 });
                 $('.delivery-info form').submit(function(event) {
 
-                    event.preventDefault(); // adds delivery charges
+                    event.preventDefault();
+                    // adds delivery charges
                     $('.pizzaCharges').text("Ksh." + (totalCost + 150));
 
                     let yourNames = $("#yourName1").val();
@@ -112,3 +113,8 @@ $(document).ready(function() {
                     $('.pick-up').hide();
                 });
             }
+            // shows the final total charges 
+            $('#checkout').click(function() {
+                $('.order-info').hide();
+                $('.summary-confirm').show();
+            });
