@@ -46,3 +46,55 @@ body {
     padding-top: 20px;
     color: white;
 }
+
+.contact-form {
+    margin-top: 50px;
+}
+
+.textarea {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    width: 75%;
+}
+
+.email {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.name {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.send {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.nameEmail {
+    padding-top: 10px;
+    padding-left: 50px;
+}
+
+.messagePart {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+ ::placeholder {
+    color: white;
+}
+
+input {
+    width: 37%;
+}
+
+.button {
+    padding-top: 20px;
+    font-size: 20px;
+}
