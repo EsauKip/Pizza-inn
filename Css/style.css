@@ -83,3 +83,29 @@ button:hover {
     background-color: white;
     color: black;
 }
+
+footer {
+    background-color: white;
+    margin-top: 300px;
+    color: black;
+}
+
+.footer,
+i {
+    font-size: 70px;
+}
+
+.ut {
+    color: orangered;
+    font-size: 100px;
+}
+
+.tm {
+    color: orangered;
+    font-size: 100px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+}
