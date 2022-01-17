@@ -46,3 +46,40 @@ body {
     padding-top: 20px;
     font-family: sans-serif;
 }
+
+.intro {
+    color: white;
+    margin-top: 100px;
+    height: 400px;
+    width: 400px;
+    padding: 50px;
+    opacity: .9;
+    margin: 100px 20px 0;
+    background-color: #030303;
+    border-bottom-right-radius: 70px;
+    box-shadow: 5px 5px 30px orangered;
+    border-top-left-radius: 70px;
+}
+
+.intro h2 {
+    text-align: center;
+    background-color: #030303;
+    font-style: italic;
+}
+
+button {
+    margin-left: 35%;
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 5px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
