@@ -6,10 +6,10 @@
 ** User selects the pizza he would like to order customizing it with options for size, crust and toppings.
 ** A price breakdown and grand total price will appear as well as a checkout button to confirm order.
 ## set up and installation requirements
-** here is a guide to how to install
-**** step 1: git clone my repository
-**** step 2: navigate to the directory Pizza-inn
-**** step 3: open the directory with your prefered editor
+* here is a guide to how to install
+* step 1: git clone my repository
+* step 2: navigate to the directory Pizza-inn
+* step 3: open the directory with your prefered editor
 ** be free to work through it.
 ## Technologies used 
 * html
