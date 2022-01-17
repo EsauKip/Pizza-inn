@@ -13,3 +13,8 @@ totalOrders.prototype.totalCharges = function() {
 let totalCost = 0;
 
 // user interface
+$(document).ready(function() {
+            // shows information to complete order
+            $('.btn').click(function() {
+                $('.order').show();
+            });
