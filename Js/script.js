@@ -87,4 +87,28 @@ $(document).ready(function() {
                 });
                 $('.delivery-info form').submit(function(event) {
 
-                            event.preventDefault();
+                    event.preventDefault(); // adds delivery charges
+                    $('.pizzaCharges').text("Ksh." + (totalCost + 150));
+
+                    let yourNames = $("#yourName1").val();
+
+                    $('.delivery-info').hide();
+                    $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourNames + ", your order will be delivered to your location" + "</p>")
+                });
+
+            }
+            if (noDeliver) {
+
+                $('#show-no-delivery').click(function() {
+                    $('.delivery-info').hide();
+                    $('.pick-up').toggle(1000);
+                });
+                $('.pick-up form').submit(function(event) {
+
+                    event.preventDefault();
+                    let yourName2 = $("#yourName2").val();
+                    $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourName2 + ",your order will be ready in 30 minutes " + "</p>")
+
+                    $('.pick-up').hide();
+                });
+            }
