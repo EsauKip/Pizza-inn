@@ -14,107 +14,111 @@ let totalCost = 0;
 
 // user interface
 $(document).ready(function() {
-            // shows information to complete order
-            $('.btn').click(function() {
-                $('.order').show();
-            }); // hides the information
-            $('#cancel').click(function() {
-                $("form")[0].reset();
-                $('.order').hide();
-            });
+    // shows information to complete order
+    $('.btn').click(function() {
+        $('.order').show();
+    }); // hides the information
+    $('#cancel').click(function() {
+        $("form")[0].reset();
+        $('.order').hide();
+    });
 
 
-            $('form#order').last().submit(function(event) {
+    $('form#order').last().submit(function(event) {
 
-                event.preventDefault();
+        event.preventDefault();
 
-                // collects values of the order
-                let size = parseInt($('input:radio[name=size]:checked').val());
-                let crust = parseInt($('input:radio[name=crust]:checked').val());
-                let topping = [];
-                $.each($('input:checkbox[name=topping]:checked'), function() {
-                    topping.push(parseInt($(this).val()))
-                });
-                let totalToppings = 0;
-                for (let i = 0; i < topping.length; i++) {
-                    totalToppings += topping[i];
-                }
-                // display selected values in a summary
-                let idSize = $('input:radio[name=size]:checked').attr('id');
-                let idCrust = $('input:radio[name=crust]:checked').attr('id');
-                let idToppings = [];
-                $.each($('input:checkbox[name=topping]:checked'), function() {
-                    idToppings.push($(this).attr('id'));
-                });
+        // collects values of the order
+        let size = parseInt($('input:radio[name=size]:checked').val());
+        let crust = parseInt($('input:radio[name=crust]:checked').val());
+        let topping = [];
+        $.each($('input:checkbox[name=topping]:checked'), function() {
+            topping.push(parseInt($(this).val()))
+        });
+        let totalToppings = 0;
+        for (let i = 0; i < topping.length; i++) {
+            totalToppings += topping[i];
+        }
+        // display selected values in a summary
+        let idSize = $('input:radio[name=size]:checked').attr('id');
+        let idCrust = $('input:radio[name=crust]:checked').attr('id');
+        let idToppings = [];
+        $.each($('input:checkbox[name=topping]:checked'), function() {
+            idToppings.push($(this).attr('id'));
+        });
 
-                let numberOfPizza = parseInt($('#orders-selected').val());
+        let numberOfPizza = parseInt($('#orders-selected').val());
 
-                $('.first-summary').show();
-                $('.first-summary').append(
-                    "<tbody>" +
-                    "<tr class='table-dark'>" +
-                    "<td>" + "</td>" +
-                    "<td>" + idSize + "</td>" +
-                    "<td>" + idCrust + "</td>" +
-                    "<td>" + idToppings + "</td>" +
-                    "<td>" + numberOfPizza + "</td>" +
-                    "</tr>" +
-                    "</tbody>"
-                );
-                //calculates total number of pizza
+        $('.first-summary').show();
+        $('.first-summary').append(
+            "<tbody>" +
+            "<tr class='table-dark'>" +
+            "<td>" + "</td>" +
+            "<td>" + idSize + "</td>" +
+            "<td>" + idCrust + "</td>" +
+            "<td>" + idToppings + "</td>" +
+            "<td>" + numberOfPizza + "</td>" +
+            "</tr>" +
+            "</tbody>"
+        );
+        //calculates total number of pizza
 
-                let pizzaCharge = new totalOrders(size, crust, totalToppings, numberOfPizza);
+        let pizzaCharge = new totalOrders(size, crust, totalToppings, numberOfPizza);
 
-                $('.pizzaCharges').text("Ksh." + pizzaCharge.totalCharges());
+        $('.pizzaCharges').text("Ksh." + pizzaCharge.totalCharges());
 
-                // resets the form
-                $("form#order")[0].reset();
+        // resets the form
+        $("form#order")[0].reset();
 
-                // Shows the total charges
-                totalCost += pizzaCharge.totalCharges();
+        // Shows the total charges
+        totalCost += pizzaCharge.totalCharges();
 
-                $('.pizzaCharges').text("Ksh." + totalCost);
+        $('.pizzaCharges').text("Ksh." + totalCost);
 
-            }); // options for delivery or not
-            let deliverSelected = $('#show-delivery');
-            let noDeliver = $('#show-no-delivery');
+    }); // options for delivery or not
+    let deliverSelected = $('#show-delivery');
+    let noDeliver = $('#show-no-delivery');
 
-            if (deliverSelected) {
+    if (deliverSelected) {
 
-                $('#show-delivery').click(function() {
-                    $('.pick-up').hide();
-                    $('.delivery-info').toggle(1000);
-                });
-                $('.delivery-info form').submit(function(event) {
+        $('#show-delivery').click(function() {
+            $('.pick-up').hide();
+            $('.delivery-info').toggle(1000);
+        });
+        $('.delivery-info form').submit(function(event) {
 
-                    event.preventDefault();
-                    // adds delivery charges
-                    $('.pizzaCharges').text("Ksh." + (totalCost + 150));
+            event.preventDefault();
+            // adds delivery charges
+            $('.pizzaCharges').text("Ksh." + (totalCost + 150));
 
-                    let yourNames = $("#yourName1").val();
+            let yourNames = $("#yourName1").val();
 
-                    $('.delivery-info').hide();
-                    $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourNames + ", your order will be delivered to your location" + "</p>")
-                });
+            $('.delivery-info').hide();
+            $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourNames + ", your order will be delivered to your location" + "</p>")
+        });
 
-            }
-            if (noDeliver) {
+    }
+    if (noDeliver) {
 
-                $('#show-no-delivery').click(function() {
-                    $('.delivery-info').hide();
-                    $('.pick-up').toggle(1000);
-                });
-                $('.pick-up form').submit(function(event) {
+        $('#show-no-delivery').click(function() {
+            $('.delivery-info').hide();
+            $('.pick-up').toggle(1000);
+        });
+        $('.pick-up form').submit(function(event) {
 
-                    event.preventDefault();
-                    let yourName2 = $("#yourName2").val();
-                    $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourName2 + ",your order will be ready in 30 minutes " + "</p>")
+            event.preventDefault();
+            let yourName2 = $("#yourName2").val();
+            $('.delivery-info2').append("<p class='delivery-info2 alert alert-success text-center'>" + yourName2 + ",your order will be ready in 30 minutes " + "</p>")
 
-                    $('.pick-up').hide();
-                });
-            }
-            // shows the final total charges 
-            $('#checkout').click(function() {
-                $('.order-info').hide();
-                $('.summary-confirm').show();
-            });
+            $('.pick-up').hide();
+        });
+    }
+    // shows the final total charges 
+    $('#checkout').click(function() {
+        $('.order-info').hide();
+        $('.summary-confirm').show();
+    }); // confirming order
+    $('#confirm').submit(function() {
+        alert("Thank you for choosing us!");
+    });
+});
