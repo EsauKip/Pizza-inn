@@ -75,4 +75,16 @@ $(document).ready(function() {
 
                 $('.pizzaCharges').text("Ksh." + totalCost);
 
-            });
+            }); // options for delivery or not
+            let deliverSelected = $('#show-delivery');
+            let noDeliver = $('#show-no-delivery');
+
+            if (deliverSelected) {
+
+                $('#show-delivery').click(function() {
+                    $('.pick-up').hide();
+                    $('.delivery-info').toggle(1000);
+                });
+                $('.delivery-info form').submit(function(event) {
+
+                            event.preventDefault();
