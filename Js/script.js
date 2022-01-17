@@ -26,38 +26,53 @@ $(document).ready(function() {
 
             $('form#order').last().submit(function(event) {
 
-                        event.preventDefault();
+                event.preventDefault();
 
-                        // collects values of the order
-                        let size = parseInt($('input:radio[name=size]:checked').val());
-                        let crust = parseInt($('input:radio[name=crust]:checked').val());
-                        let topping = [];
-                        $.each($('input:checkbox[name=topping]:checked'), function() {
-                            topping.push(parseInt($(this).val()))
-                        });
-                        let totalToppings = 0;
-                        for (let i = 0; i < topping.length; i++) {
-                            totalToppings += topping[i];
-                        }
-                        // display selected values in a summary
-                        let idSize = $('input:radio[name=size]:checked').attr('id');
-                        let idCrust = $('input:radio[name=crust]:checked').attr('id');
-                        let idToppings = [];
-                        $.each($('input:checkbox[name=topping]:checked'), function() {
-                            idToppings.push($(this).attr('id'));
-                        });
+                // collects values of the order
+                let size = parseInt($('input:radio[name=size]:checked').val());
+                let crust = parseInt($('input:radio[name=crust]:checked').val());
+                let topping = [];
+                $.each($('input:checkbox[name=topping]:checked'), function() {
+                    topping.push(parseInt($(this).val()))
+                });
+                let totalToppings = 0;
+                for (let i = 0; i < topping.length; i++) {
+                    totalToppings += topping[i];
+                }
+                // display selected values in a summary
+                let idSize = $('input:radio[name=size]:checked').attr('id');
+                let idCrust = $('input:radio[name=crust]:checked').attr('id');
+                let idToppings = [];
+                $.each($('input:checkbox[name=topping]:checked'), function() {
+                    idToppings.push($(this).attr('id'));
+                });
 
-                        let numberOfPizza = parseInt($('#orders-selected').val());
+                let numberOfPizza = parseInt($('#orders-selected').val());
 
-                        $('.first-summary').show();
-                        $('.first-summary').append(
-                            "<tbody>" +
-                            "<tr class='table-dark'>" +
-                            "<td>" + "</td>" +
-                            "<td>" + idSize + "</td>" +
-                            "<td>" + idCrust + "</td>" +
-                            "<td>" + idToppings + "</td>" +
-                            "<td>" + numberOfPizza + "</td>" +
-                            "</tr>" +
-                            "</tbody>"
-                        );
+                $('.first-summary').show();
+                $('.first-summary').append(
+                    "<tbody>" +
+                    "<tr class='table-dark'>" +
+                    "<td>" + "</td>" +
+                    "<td>" + idSize + "</td>" +
+                    "<td>" + idCrust + "</td>" +
+                    "<td>" + idToppings + "</td>" +
+                    "<td>" + numberOfPizza + "</td>" +
+                    "</tr>" +
+                    "</tbody>"
+                );
+                //calculates total number of pizza
+
+                let pizzaCharge = new totalOrders(size, crust, totalToppings, numberOfPizza);
+
+                $('.pizzaCharges').text("Ksh." + pizzaCharge.totalCharges());
+
+                // resets the form
+                $("form#order")[0].reset();
+
+                // Shows the total charges
+                totalCost += pizzaCharge.totalCharges();
+
+                $('.pizzaCharges').text("Ksh." + totalCost);
+
+            });
